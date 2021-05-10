@@ -9,7 +9,7 @@
 #define CMAKETOQMAKE_WIDGET_H
 
 #include <QWidget>
-
+#include <QStringList>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -23,8 +23,25 @@ public:
 
     ~Widget() override;
 
+private slots:
+    void selectQtDir();
+    void selectSourceDir();
+    void toCmake();
+    void toQmake();
+    void updateData();
+
+private:
+    void findFile(const QString &dirPath);
+
 private:
     Ui::Widget *ui;
+
+    QString rootDirPath_;
+    QString proPath_;
+    QStringList sourceList_;
+    QStringList headerList_;
+    QStringList resourceList_;
+    QStringList uiList_;
 };
 
 
